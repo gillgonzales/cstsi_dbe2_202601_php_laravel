@@ -18,5 +18,8 @@
             "email": "gillgonzales@ifsul.edu.br"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "scripts":{
+        "dev": "php -S localhost:8090 -t src"
+    }
 }
