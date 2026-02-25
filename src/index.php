@@ -1,7 +1,9 @@
 <?php
 require_once '../vendor/autoload.php';
 
+use CSTSI\Dbe2\classes\App;
 use Dotenv\Dotenv;
+
 
 echo "<pre>";
 echo "Olá Mundo!!!\n";
@@ -15,3 +17,5 @@ print_r($_ENV);
 
 echo "\nNome do Banco de Dados: $_ENV[DB_NAME]";
 echo "\nServidor do Banco de Dados: $_ENV[DB_HOST]";
+
+App::loadEnv();
