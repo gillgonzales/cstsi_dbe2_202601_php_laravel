@@ -378,7 +378,7 @@ EXPOSE $APP_PORT
 
 ## 🌐 Acessando a Aplicação
 
-Após iniciar com `docker-compose up`:
+Após iniciar com `docker compose up`:
 
 - **Aplicação PHP**: http://localhost:8083
 - **PhpMyAdmin**: http://localhost:8093
