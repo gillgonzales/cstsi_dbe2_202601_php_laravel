@@ -9,9 +9,9 @@ services:
     command: > 
             sh -c "cd /var/www/html/ &&
                     composer i &&
-                    php -S 0.0.0.0:80 -t src;"
+                    composer run dev;"
     ports:
-      - 8083:80
+      - ${APP_PORT:-8083}:80
     volumes:
         - '.:/var/www/html'
     networks:
