@@ -493,12 +493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "8c360e27327c8bd29e1c57721574709d0d706118"
+                "reference": "50f0d9c9d0e3cff1163c959c50aaaaa4a7115f08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8c360e27327c8bd29e1c57721574709d0d706118",
-                "reference": "8c360e27327c8bd29e1c57721574709d0d706118",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/50f0d9c9d0e3cff1163c959c50aaaaa4a7115f08",
+                "reference": "50f0d9c9d0e3cff1163c959c50aaaaa4a7115f08",
                 "shasum": ""
             },
             "require": {
@@ -544,7 +544,7 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/master"
             },
-            "time": "2025-12-06T20:24:35+00:00"
+            "time": "2026-02-26T13:20:22+00:00"
         },
         {
             "name": "psr/container",
@@ -686,12 +686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "8f72329e57f01094359de2bb7a1f742ce8de80af"
+                "reference": "c0b741c1729e91644727b3db90f63e26598c673c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/8f72329e57f01094359de2bb7a1f742ce8de80af",
-                "reference": "8f72329e57f01094359de2bb7a1f742ce8de80af",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c0b741c1729e91644727b3db90f63e26598c673c",
+                "reference": "c0b741c1729e91644727b3db90f63e26598c673c",
                 "shasum": ""
             },
             "require": {
@@ -774,7 +774,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-23T18:24:54+00:00"
+            "time": "2026-03-02T19:28:35+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
