@@ -1,8 +1,17 @@
 # Exemplos da Disciplina de Desenvolvimento Backend II - CSTSI
 
-## 📋 Visão Geral
+Este repositório contém projetos de exemplo desenvolvidos durante as aulas da disciplina de Desenvolvimento Backend II do 4º Semestre do Curso Superior de Tecnologia em Sistemas para Internet do IFSUL.
 
-Este projeto é uma aplicação web desenvolvida em PHP puro com uma arquitetura MVC (Model-View-Controller) personalizada. Utiliza Docker e Docker Compose para containerização e gerenciamento de serviços, facilitando o desenvolvimento e a padronização do ambiente.
+---
+
+**Autor**: Prof. Gonzales  
+**Email**: gillgonzales@ifsul.edu.br
+
+---
+
+## 📋 Visão Geral - Tópico 01
+
+No **Tópico 01** desenvolvemos um projeto web em PHP puro, moderno, de acordo com o paradigma da Orientação a Objetos e com uma arquitetura baseada em MVC (Model-View-Controller). Utiliza Docker e Docker Compose para conteinerização e gerenciamento de serviços, facilitando o desenvolvimento e a padronização do ambiente.
 
 ---
 
@@ -68,43 +77,43 @@ O arquivo `compose.yaml` define três serviços principais:
 
 ```bash
 # Iniciar em modo foreground (vê os logs)
-docker-compose up
+docker compose up
 
 # Iniciar em background (modo daemon)
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Parar os Containers
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Parar e Remover Volumes
 
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
 
 ### Visualizar Logs
 
 ```bash
 # Todos os serviços
-docker-compose logs -f
+docker compose logs -f
 
 # Serviço específico
-docker-compose logs -f app_php
-docker-compose logs -f mariadb
+docker compose logs -f app_php
+docker compose logs -f mariadb
 ```
 
 ### Executar Comandos no Container
 
 ```bash
 # Acessar shell do PHP
-docker-compose exec app_php bash
+docker compose exec app_php bash
 
 # Executar comando específico
-docker-compose exec app_php php -v
+docker compose exec app_php php -v
 ```
 
 ---
@@ -142,37 +151,32 @@ Requisição HTTP → Router → Controller → Model (BD) → View → Resposta
 
 ```
 .
-├── src/                          # Código-fonte da aplicação
-│   ├── app/                      # Núcleo da aplicação MVC
-│   │   ├── controllers/          # Controllers - Processam requisições
-│   │   │   ├── Controller.php    # Classe base para controllers
-│   │   │   └── ProdutoController.php  # Controller de Produtos
-│   │   ├── models/               # Models - Lógica de dados
-│   │   │   ├── Model.php         # Classe base para modelos
-│   │   │   └── Produto.php       # Modelo de Produto
-│   │   ├── views/                # Views - Apresentação
-│   │   │   ├── View.php          # Classe para renderizar views
-│   │   │   └── templates/        # Arquivos de template HTML
-│   │   │       └── produtos/     # Templates específicos de Produtos
-│   │   └── core/                 # Núcleo da aplicação
-│   │       ├── App.php           # Classe de inicialização da app
-│   │       └── Route.php         # Sistema de roteamento
-│   ├── config/                   # Configurações
-│   │   └── routes.php            # Definição de rotas
-│   ├── database/                 # Banco de Dados
-│   │   ├── Connection.php        # Classe de conexão com BD
-│   │   └── dumps/                # Backups do banco
-│   │       ├── mysql_apiprod.sql
-│   │       └── pgsql_apiprod.sql
-│   └── public/                   # Raiz pública (documentroot)
-│       ├── index.php             # Ponto de entrada da aplicação
-│       └── templates/            # Assets públicos
-│           └── produtos/         # Arquivos de view dos produtos
-├── vendor/                       # Dependências do Composer
-├── compose.yaml                  # Configuração Docker Compose
-├── Dockerfile                    # Definição da imagem Docker
-├── composer.json                 # Configuração do Composer
-└── readme.md                     # Este arquivo
+├── src/                                # Código-fonte da aplicação
+│   ├── app/                            # Núcleo da aplicação MVC
+│   │   ├── controllers/                # Controllers - Processam requisições
+│   │   │   ├── Controller.php          # Classe base para controllers
+│   │   │   └── ProdutoController.php   # Controller de Produtos
+│   │   ├── models/                     # Models - Lógica de dados
+│   │   │   ├── Model.php               # Classe base para modelos
+│   │   │   └── Produto.php             # Modelo de Produto
+│   │   ├── views/                      # Views - Apresentação
+│   │   │   ├── View.php                # Classe para renderizar views
+│   │   └── core/                       # Núcleo da aplicação
+│   │       ├── App.php                 # Classe de inicialização da app
+│   │       └── Route.php               # Sistema de roteamento
+│   ├── config/                         # Configurações
+│   │   └── routes.php                  # Definição de rotas
+│   ├── database/                       # Banco de Dados
+│   │   ├── Connection.php              # Classe de conexão com BD
+│   │   └── dumps/                      # Backups do banco
+│   └── public/                         # Raiz pública (documentroot)
+│       ├── index.php                   # Ponto de entrada da aplicação
+│       └── templates/                  # Assets públicos e arquivos de template HTML/PHTML
+│           └── produtos/               # Templates específicos de Produtos
+├── vendor/                             # Dependências do Composer
+├── compose.yaml                        # Configuração Docker Compose
+├── Dockerfile                          # Definição da imagem Docker
+├── composer.json                       # Configuração do Composer
 
 ```
 
@@ -419,7 +423,4 @@ FORWARD_MYADMIN_PORT=8093
 - [Composer Documentation](https://getcomposer.org/doc/)
 - [PSR-4 Autoloading](https://www.php-fig.org/psr/psr-4/)
 
----
 
-**Autor**: Prof. Gonzales  
-**Email**: gillgonzales@ifsul.edu.br
