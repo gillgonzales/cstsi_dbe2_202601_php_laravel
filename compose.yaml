@@ -2,6 +2,14 @@ name: dbe2-app-topico01
 services: 
   app_php:
     build: .
+    command: > 
+            sh -c "cd /var/www/html/ &&
+                    composer i &&
+                    php -S 0.0.0.0:80 -t src;"
+    ports:
+      - 8083:80
+    volumes:
+        - '.:/var/www/html'
     networks:
       - app_net
     depends_on:
