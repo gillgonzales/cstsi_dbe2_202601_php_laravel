@@ -1,7 +1,11 @@
 name: dbe2-app-topico01
 services: 
   app_php:
-    build: .
+    build:
+      dockerfile: ./Dockerfile
+      args:
+          MYSQL_CLIENT: mariadb-client
+      context: .
     command: > 
             sh -c "cd /var/www/html/ &&
                     composer i &&
