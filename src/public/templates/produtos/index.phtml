@@ -6,6 +6,7 @@
     <title>Lista de Produtos</title>
 </head>
 <body>
+	<h2>Lista de Produtos</h2>
     <ul>
 		<?php foreach ($produtos as $produto): ?>
 			<li>
@@ -13,7 +14,7 @@
 					<?php echo $produto['id_prod'] ?>
 				</a>
 				| <?php echo $produto['nome'] ?> 
-				| R$ <?php echo $produto['preco'] ?> 
+				| R$ <?php echo $produto['preco'] ?>
 				<?php if(isset($_SESSION['AUTH'])):?>
 				<div style='display:inline'>
 					| <a href="/produtos/edit/<?php echo $produto['id_prod']?>">
