@@ -36,15 +36,12 @@ class ProdutoDAO extends Model implements iDAO
 
     public function read(int | null $id = null): array | bool
     {
-        $sql = "SELECT * FROM $this->table";
-        $prepStmt = $this->conn->prepare($sql);
-
-        if ($prepStmt->execute()) {
-            // var_dump($prepStmt);
-            return $prepStmt->fetchAll(self::FETCH);
-        } else {
+        $result  = $this->selectAll();
+        // var_dump($result);
+        if(!$result)
             throw new Exception("Erro ao ler dados do banco!");
-        }
+        
+        return $result;
     }
 
     public function update(object $produto): bool
