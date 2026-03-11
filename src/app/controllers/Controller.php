@@ -14,7 +14,7 @@ abstract class Controller{
 	public function __construct()
 	{
 		session_start();
-		header("Content-Type:text/html;charset=utf-8'");
+		header("Content-Type:text/html;charset=UTF8");
 		$this->view = new View();
 	}
 
