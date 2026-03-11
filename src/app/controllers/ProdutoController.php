@@ -3,6 +3,7 @@
 namespace CSTSI\Dbe2\app\controllers;
 
 use CSTSI\Dbe2\app\models\{Produto, ProdutoDAO};
+use Exception;
 
 class ProdutoController extends Controller
 {
@@ -21,6 +22,14 @@ class ProdutoController extends Controller
     }
 
     public function create(){
+        // if(count($_POST)){
+        //      $nome = isset($_POST['nome'])?$_POST['nome']:null;
+
+        //      if(!$nome)
+        //         throw new Exception('Preencha todos os campos!!!');
+        //      $produto = new Produto(null,'teste','teste',12,123);         
+        // }
+
         $produto = new Produto(null,'teste','teste',12,123);
         $this->model->create($produto);
         return header("Location: /produtos");
