@@ -44,8 +44,15 @@ abstract class Model
     protected function setValues(object $object)
     {
         $this->values = [];
-        foreach ($this->columns as $value)
-            $this->values[":$value"] = $object->$value;
+        foreach ($this->columns as $column)
+            $this->values[":$column"] = $object->$column;
+    }
+
+    protected function selectAll(): array{
+        $sql = "SELECT * FROM $this->table";
+        $prepStmt = $this->conn->prepare($sql);
+        $prepStmt->execute();        
+        return $prepStmt->fetchAll(self::FETCH);
     }
 
     protected function insert(): bool
@@ -61,7 +68,7 @@ abstract class Model
     protected function updates(): bool
     {
         $updatedColumns = [];
-        foreach ($this->columns as  $value) $updatedColumns[] = "$value = :$value ";
+        foreach ($this->columns as  $column) $updatedColumns[] = "$column = :$column ";
 
         $sql = "UPDATE $this->table SET ".implode(', ',$updatedColumns).
                   "WHERE $this->primaryKey = :id";
