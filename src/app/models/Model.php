@@ -48,6 +48,16 @@ abstract class Model
             $this->values[":$column"] = $object->$column;
     }
 
+     protected function selectById($id): array{
+        $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :id";
+        $prepStmt = $this->conn->prepare($sql);
+        $prepStmt->execute([':id'=>$id]);
+        $result = $prepStmt->fetchAll(self::FETCH);
+        if(!$result) 
+            throw new Exception("Registro não encontrado no banco!");
+        return $result[0];
+    }
+
     protected function selectAll(): array{
         $sql = "SELECT * FROM $this->table";
         $prepStmt = $this->conn->prepare($sql);
