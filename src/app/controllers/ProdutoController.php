@@ -21,6 +21,17 @@ class ProdutoController extends Controller
         ]);
     }
 
+    public function show(int $id)
+    {
+        try{
+            $produto = $this->model->read($id);
+            $this->view->load('produtos/show', compact('produto'));
+        }catch(Exception $error){
+            error_log("CONTROLLER: Erro show param $id.\n".print_r($error,true));
+            $this->view->pageNotFound();
+        }
+    }
+
     public function create(){
         // if(count($_POST)){
         //      $nome = isset($_POST['nome'])?$_POST['nome']:null;
