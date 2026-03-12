@@ -6,6 +6,6 @@ class HomeController extends Controller {
 
     public function index()
     {
-       echo "Olá Mundo!!!";
+       $this->view->load('home');
     }
 }
