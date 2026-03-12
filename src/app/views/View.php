@@ -9,4 +9,8 @@ class View{
         // var_dump(__DIR__);
         require_once __DIR__."/../../public/templates/$page.phtml";
     }
+
+    public static function pageNotFound(){
+       header('HTTP/1.0 404 Not Found');
+    }
 }

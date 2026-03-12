@@ -3,6 +3,7 @@
 namespace CSTSI\Dbe2\app\core;
 
 use CSTSI\Dbe2\app\controllers\Controller;
+use CSTSI\Dbe2\app\views\View;
 
 class Route
 {
@@ -38,7 +39,7 @@ class Route
 				}
 			}
 		}
-		if (!$class ) header('HTTP/1.0 404 Not Found');
+		if (!$class ) View::pageNotFound();
     }
 
     private static function parseURI(): array
@@ -47,8 +48,7 @@ class Route
             return [$_SERVER['REQUEST_URI']];
         } else {
             $url_path = trim($_SERVER['REQUEST_URI'], '/');
-            error_log("Route: $url_path");
-
+            error_log("ROUTE: $url_path");
             return explode('/', $url_path);
         }
     }
