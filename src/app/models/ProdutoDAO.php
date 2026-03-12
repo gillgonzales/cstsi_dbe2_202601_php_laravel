@@ -36,11 +36,8 @@ class ProdutoDAO extends Model implements iDAO
 
     public function read(int | null $id = null): array | bool
     {
-        $result  = $this->selectAll();
-        // var_dump($result);
-        if(!$result)
-            throw new Exception("Erro ao ler dados do banco!");
-        
+        if(!$id)  $result  = $this->selectAll();
+        else  $result  = $this->selectById($id);
         return $result;
     }
 
