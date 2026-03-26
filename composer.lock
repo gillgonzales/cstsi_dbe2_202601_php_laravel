@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Result-Type.git",
-                "reference": "e01f4a821471308ba86aa202fed6698b6b695e3b"
+                "reference": "806fe8441c34bed1318bc779e2a510e6555f2169"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/e01f4a821471308ba86aa202fed6698b6b695e3b",
-                "reference": "e01f4a821471308ba86aa202fed6698b6b695e3b",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/806fe8441c34bed1318bc779e2a510e6555f2169",
+                "reference": "806fe8441c34bed1318bc779e2a510e6555f2169",
                 "shasum": ""
             },
             "require": {
@@ -25,7 +25,7 @@
                 "phpoption/phpoption": "^1.9.5"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5.41 || ^9.6.22 || ^10.5.45 || ^11.5.7"
+                "phpunit/phpunit": "^8.5.52 || ^9.6.34 || ^10.5.63 || ^11.5.55 || ^12.5.14"
             },
             "default-branch": true,
             "type": "library",
@@ -67,7 +67,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-27T19:43:20+00:00"
+            "time": "2026-03-19T18:33:23+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -606,12 +606,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "281ade25ad712eae3cd29204ecd6c3e31b13a007"
+                "reference": "3be75d5b9244936dd4ac62ade2bfb004d13acf0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/281ade25ad712eae3cd29204ecd6c3e31b13a007",
-                "reference": "281ade25ad712eae3cd29204ecd6c3e31b13a007",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/3be75d5b9244936dd4ac62ade2bfb004d13acf0f",
+                "reference": "3be75d5b9244936dd4ac62ade2bfb004d13acf0f",
                 "shasum": ""
             },
             "require": {
@@ -676,9 +676,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/main"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.12.22"
             },
-            "time": "2026-02-23T20:17:41+00:00"
+            "time": "2026-03-22T23:03:24+00:00"
         },
         {
             "name": "symfony/console",
@@ -686,12 +686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "c0b741c1729e91644727b3db90f63e26598c673c"
+                "reference": "abb59a2d3fa9b9dda7dac9074100020a02fdb500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/c0b741c1729e91644727b3db90f63e26598c673c",
-                "reference": "c0b741c1729e91644727b3db90f63e26598c673c",
+                "url": "https://api.github.com/repos/symfony/console/zipball/abb59a2d3fa9b9dda7dac9074100020a02fdb500",
+                "reference": "abb59a2d3fa9b9dda7dac9074100020a02fdb500",
                 "shasum": ""
             },
             "require": {
@@ -699,7 +699,7 @@
                 "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-mbstring": "^1.0",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/string": "^7.4|^8.0"
+                "symfony/string": "^7.4.6|^8.0.6"
             },
             "provide": {
                 "psr/log-implementation": "1.0|2.0|3.0"
@@ -774,7 +774,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-02T19:28:35+00:00"
+            "time": "2026-03-23T20:05:02+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1023,12 +1023,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "639fa48ea277babeb67e1432ce60a029d795bd63"
+                "reference": "d714f7788dd07a4a93cd0d6cc63fbf487ba67014"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/639fa48ea277babeb67e1432ce60a029d795bd63",
-                "reference": "639fa48ea277babeb67e1432ce60a029d795bd63",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/d714f7788dd07a4a93cd0d6cc63fbf487ba67014",
+                "reference": "d714f7788dd07a4a93cd0d6cc63fbf487ba67014",
                 "shasum": ""
             },
             "require": {
@@ -1103,7 +1103,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-13T20:42:21+00:00"
+            "time": "2026-03-15T18:28:19+00:00"
         },
         {
             "name": "symfony/string",
@@ -1202,12 +1202,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "cbb9a099e99d9d22b26d099311e87ea077d547b2"
+                "reference": "bbd278a21804938c65829163f5fba96e05233e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/cbb9a099e99d9d22b26d099311e87ea077d547b2",
-                "reference": "cbb9a099e99d9d22b26d099311e87ea077d547b2",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/bbd278a21804938c65829163f5fba96e05233e38",
+                "reference": "bbd278a21804938c65829163f5fba96e05233e38",
                 "shasum": ""
             },
             "require": {
@@ -1282,7 +1282,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-15T10:53:36+00:00"
+            "time": "2026-03-17T15:35:01+00:00"
         }
     ],
     "aliases": [],
