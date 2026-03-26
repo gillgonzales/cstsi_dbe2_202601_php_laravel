@@ -33,17 +33,33 @@ class ProdutoController extends Controller
     }
 
     public function create(){
-        // if(count($_POST)){
-        //      $nome = isset($_POST['nome'])?$_POST['nome']:null;
+        $this->view->load('produtos/create');
+    }
 
-        //      if(!$nome)
-        //         throw new Exception('Preencha todos os campos!!!');
-        //      $produto = new Produto(null,'teste','teste',12,123);         
-        // }
+    public function store(){
+        try{
+			$novoProduto = new Produto(null,
+				$_POST['nome'],
+				$_POST['descricao'],
+				$_POST['qtd_estoque'],
+				$_POST['preco']
+			);
 
-        $produto = new Produto(null,'teste','teste',12,123);
-        $this->model->create($produto);
-        return header("Location: /produtos");
+			$novoProduto->importado = isset($_POST['importado']);
+
+			if ($this->model->create($novoProduto)) {
+				 return header("Location: /produtos");
+			} else {
+				$msg = 'Erro ao cadastrar produto!';
+				throw new Exception($msg);
+			}
+		} catch (Exception $error) {
+			var_dump([
+                $error->getMessage(),
+                $error->getTrace(),
+            ]);
+            die;
+		}
     }
 
     public function update($id){

@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h2>Lista de Produtos</h2>
+	<a href="/produtos/create">&plus; Cadastrar Novo Produto</a>
     <ul>
 		<?php foreach ($produtos as $produto): ?>
 			<li>
@@ -15,7 +16,6 @@
 				</a>
 				| <?php echo $produto['nome'] ?> 
 				| R$ <?php echo $produto['preco'] ?>
-				<?php if(isset($_SESSION['AUTH'])):?>
 				<div style='display:inline'>
 					| <a href="/produtos/edit/<?php echo $produto['id_prod']?>">
 						Editar
@@ -24,7 +24,6 @@
 						Remover
 					</a> 
 				<div>
-				<?php endif;?>
 			</li>
 		<?php endforeach ?>
 	</ul>
