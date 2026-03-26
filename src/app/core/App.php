@@ -2,14 +2,15 @@
 
 namespace CSTSI\Dbe2\app\core;
 
-use Dotenv\Dotenv;
+use CSTSI\Dbe2\app\traits\Env;
 
 class App
 {
+    use Env;
+
     public static function init()
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../../');
-        $dotenv->load();
+        self::load(__DIR__ . "/../../../");
         require_once __DIR__.'/../../config/routes.php';
         Route::resolve($routes);
     }
