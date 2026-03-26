@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbe2\Topico01\app\traits;
+namespace CSTSI\Dbe2\app\traits;
 
 use Dotenv\Dotenv;
 use Exception;
@@ -8,9 +8,9 @@ use Exception;
 trait Env
 {
 
-    public static function load(): void
+    public static function load(string $envPath = "./"): void
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . "/../../");
+        $dotenv = Dotenv::createImmutable($envPath);
         $dotenv->load();
         if (!count($_ENV))
             throw new Exception("Erro ao carregar variáveis de ambiente!");

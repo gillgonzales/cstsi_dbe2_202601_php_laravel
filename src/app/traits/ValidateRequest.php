@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbe2\Topico01\app\traits;
+namespace CSTSI\Dbe2\app\traits;
 
 trait ValidateRequest{
 
