@@ -38,6 +38,8 @@ class ProdutoController extends Controller
 
     public function store(){
         try{
+            $this->validateProdutoRequest();
+
 			$novoProduto = new Produto(null,
 				$_POST['nome'],
 				$_POST['descricao'],
@@ -69,6 +71,8 @@ class ProdutoController extends Controller
 
     public function update($id){
         try{
+            $this->validateProdutoRequest();
+
             $produto = new Produto($id,
 				$_POST['nome'],
 				$_POST['descricao'],
@@ -87,13 +91,43 @@ class ProdutoController extends Controller
     }
 
     public function delete(int $id){
-        $produto = $this->model->read($id);
-        $this->view->load('produtos/delete',compact('produto'));
+         try{
+            $produto = $this->model->read($id);
+            $this->view->load('produtos/delete',compact('produto'));
+         } catch (Exception $error) {
+			var_dump([
+                $error->getMessage(),
+                $error->getTrace(),
+            ]);
+            die;
+		}
     }
 
     public function remove(){
-        $id = $_POST['id'];
-        $this->model->delete($id);
-        return header("Location: /produtos");
+        try{
+            $this->validatePostRequest(['id']);
+            $this->model->delete($_POST['id']);
+            return header("Location: /produtos");
+        } catch (Exception $error) {
+			var_dump([
+                $error->getMessage(),
+                $error->getTrace(),
+            ]);
+            die;
+		}
     }
+
+    private function validateProdutoRequest()
+	{
+		$fields = [
+			'nome',
+			'descricao',
+			'qtd_estoque',
+			'preco'
+		];
+		if (!$this->validatePostRequest($fields)){
+            header("HTTP/1.1 400 Bad Request");
+            throw new Exception('Erro: campos imcompletos!');
+        }
+	}
 }

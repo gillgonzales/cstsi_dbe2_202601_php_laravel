@@ -2,9 +2,12 @@
 namespace CSTSI\Dbe2\app\controllers;
 
 use CSTSI\Dbe2\app\interfaces\iDAO;
+use CSTSI\Dbe2\app\traits\ValidateRequest;
 use CSTSI\Dbe2\app\views\View;
 
 abstract class Controller{
+
+	use ValidateRequest;
 
 	protected View $view;
 	protected iDAO $model;
