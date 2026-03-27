@@ -16,6 +16,15 @@
 				| R$ <?php echo $produto['preco'] ?>
                 <p><?php echo $produto['descricao']?></p>
 			</li>
+			<div>
+				<a href="/produtos/edit/<?php echo $produto['id_prod']?>">
+					Editar
+				</a> 
+					<!-- | <a href="/produtos/delete/<?php echo $produto['id_prod']?>">
+						Remover
+					</a> -->
+			</div>
+			<hr>
             <a href="/produtos">Voltar</a>
 	</ul>
 </body>

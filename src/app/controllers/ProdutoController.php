@@ -62,10 +62,28 @@ class ProdutoController extends Controller
 		}
     }
 
+    public function edit($id){
+        $produto = $this->model->read($id);
+        $this->view->load('produtos/edit',compact('produto'));
+    }
+
     public function update($id){
-        $produto = new Produto($id,'update','update',12,123);
-        $this->model->update($produto);
-        return header("Location: /produtos");
+        try{
+            $produto = new Produto($id,
+				$_POST['nome'],
+				$_POST['descricao'],
+				$_POST['qtd_estoque'],
+				$_POST['preco']
+			);
+            $this->model->update($produto);
+            return header("Location: /produtos");
+        } catch (Exception $error) {
+			var_dump([
+                $error->getMessage(),
+                $error->getTrace(),
+            ]);
+            die;
+		}
     }
 
     public function remove(int $id){
