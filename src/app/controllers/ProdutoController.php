@@ -86,7 +86,13 @@ class ProdutoController extends Controller
 		}
     }
 
-    public function remove(int $id){
+    public function delete(int $id){
+        $produto = $this->model->read($id);
+        $this->view->load('produtos/delete',compact('produto'));
+    }
+
+    public function remove(){
+        $id = $_POST['id'];
         $this->model->delete($id);
         return header("Location: /produtos");
     }

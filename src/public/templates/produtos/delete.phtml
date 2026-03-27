@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Detalhes do Produto</title>
+</head>
+
+<body>
+	<h2>Produto: <?php echo $produto['nome']; ?></h2>
+	<ul>
+		<li>
+			Estoque: <?php echo $produto['qtd_estoque'] ?>
+			| R$ <?php echo $produto['preco'] ?>
+			<p><?php echo $produto['descricao'] ?></p>
+		</li>
+		<div>
+			<h3>Você tem certeza que deseja remover este produto?</h3>
+			<form action="/produtos/remove" method="POST">
+				<input type=hidden name=id value="<?php echo $produto['id_prod'] ?>">
+				<input type="submit" value="Remover" />
+			</form>
+		</div>
+		<hr>
+		<a href="/produtos">Voltar</a>
+	</ul>
+</body>
+
+</html>
