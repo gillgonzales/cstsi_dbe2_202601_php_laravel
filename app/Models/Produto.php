@@ -86,7 +86,7 @@ class Produto extends Model
         return $query->whereHas('regiao',fn($q)=>$q->where('regioes.nome','like',"%$nome%"));
     }
 
-     //https://laravel.com/docs/11.x/eloquent#query-scopes
+     //https://laravel.com/docs/master/eloquent#query-scopes
     public function scopeImportados(Builder $query, bool $importado = true)
     {
         return $query->where('importado', $importado);
