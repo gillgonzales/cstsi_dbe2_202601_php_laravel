@@ -23,7 +23,7 @@ class ProdutoController extends Controller
     public function index()
     {
         // return response()->json(Produto::all());
-        return new ProdutoResourceCollection(Produto::all()->load('links'));
+        return new ProdutoResourceCollection(Produto::all()->load('links','fornecedor'));
     }
 
     /**
@@ -98,28 +98,23 @@ class ProdutoController extends Controller
             $min = $request->has('min') ? $request->min : 1;
             $max = $request->has('max') ? $request->max : 99999;
 
+            // if ($request->has('nome'))
+            //     $queryBuilderFilter->where('nome','like',"%$request->nome%");
+
+            // if ($request->hasAny(['min', 'max']))
+            //     $queryBuilderFilter->whereBetween('preco', [$min, $max]);
+
+            // if ($request->has('regiao'))
+            //     $queryBuilderFilter->porRegiao($request->regiao);
+
+            // if ($request->has('importado'))
+            //     $queryBuilderFilter->importados($importado);
+
             $queryBuilderFilter = Produto::with('fornecedor.estado.regiao');
-
-            if ($request->has('nome'))
-                $queryBuilderFilter->where('nome','like',"%$request->nome%");
-
-            if ($request->hasAny(['min', 'max']))
-                $queryBuilderFilter->whereBetween('preco', [$min, $max]);
-
-            if ($request->has('regiao'))
-                $queryBuilderFilter->whereHas(
-                    'fornecedor',
-                    fn($q) => $q->whereHas(
-                        'estado',
-                        fn($q) => $q->whereHas(
-                            'regiao',
-                            fn($q) => $q->where('nome', 'like', $request->regiao)
-                        )
-                    )
-                );
-
-            if ($request->has('importado'))
-                $queryBuilderFilter->where('importado', $importado);
+            $request->has('nome') && $queryBuilderFilter->where('nome','like',"%$request->nome%");
+            $request->hasAny(['min', 'max']) && $queryBuilderFilter->whereBetween('preco', [$min, $max]);
+            $request->has('regiao') && $queryBuilderFilter->porRegiao($request->regiao);
+            $request->has('importado') && $queryBuilderFilter->importados($importado);
 
             // dd($queryBuilderFilter->toSql());
 
