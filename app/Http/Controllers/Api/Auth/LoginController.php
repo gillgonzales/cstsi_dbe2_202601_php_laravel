@@ -14,10 +14,8 @@ use Illuminate\Support\Sleep;
 
 class LoginController extends Controller
 {
-    //
     public function authenticate(array $credentials): User | null
     {
-
         if (Auth::attempt($credentials))
             return User::where('email', $credentials['email'])->first();
         return null;
@@ -29,11 +27,10 @@ class LoginController extends Controller
         try {
             $credentials = $request->validated();
             $user = $this->authenticate($credentials);
-            // $request->session()->regenerate();
             if (!$user)
                 throw new Exception("Dados inválidos!!");
             return new UserResource($user)
-                ->additional(["message" => "Usuário logado via sessao"]);
+                ->additional(["message" => "Usuário logado via cookies!!!"]);
         } catch (Exception $error) {
             return $this->errorHandler('Erro ao realizar login!!', $error);
         }
