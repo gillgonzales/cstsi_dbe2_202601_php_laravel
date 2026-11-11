@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Regiao;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,16 +24,23 @@ class RegiaoSeeder extends Seeder
                 return;
             }
 
-            $jsonUrl = 'https://raw.githubusercontent.com/chandez/Estados-Cidades-IBGE/master/json/regioes.json';
+            $jsonUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/regioes';
             $response = Http::get($jsonUrl);
-            $regioes = $response->json()['data'];
+            $regioes = $response->json();
 
             if (!$regioes)
                 throw new \Exception("Erro ao carregar arquivo JSON de Regioes!\nURL:$jsonUrl");
 
+            Log::channel('stderr')->info("Regiões obtidas com sucesso!");
+            print_r($regioes);
+
             $listRegioes = [];
             foreach ($regioes as $regiao)
-                $listRegioes[] = ["nome" => $regiao['Nome']];
+                $listRegioes[] = [
+                                    "nome" => $regiao['nome'],
+                                    "created_at" => Carbon::now(),
+                                    "updated_at" => Carbon::now()
+                                ];
 
             if (!Regiao::insert($listRegioes))
                 throw new \Exception("Erro ao inserir Regioes!", 1);
