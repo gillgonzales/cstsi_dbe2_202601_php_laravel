@@ -15,7 +15,7 @@ class ProdutoStoreRequest extends FormRequest
     public function authorize(): bool
     {
         // return Gate::allows('superuser');
-        return Gate::allows('update',Produto::class);
+        return Gate::allows('create',Produto::class);
     }
 
     /**
