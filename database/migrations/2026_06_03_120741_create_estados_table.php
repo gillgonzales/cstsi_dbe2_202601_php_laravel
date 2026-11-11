@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('regiao_id')
                 ->references('id')->on('regioes')
                 ->cascadeOnDelete();
-            $table->integer('codigouf');
             $table->string('nome', 50);
             $table->char('uf', 2);
             $table->timestamps();

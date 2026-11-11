@@ -17,7 +17,7 @@ class ProdutoPromocaoSeeder extends Seeder
      */
     public function run(): void
     {
-         $listProdutos = Produto::all();
+        $listProdutos = Produto::all();
         $totalPromocao = Promocao::count();
 
         if(!$totalPromocao || !$listProdutos->count()) {

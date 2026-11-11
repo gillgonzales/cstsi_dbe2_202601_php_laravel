@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Estado;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -22,20 +22,22 @@ class EstadoSeeder extends Seeder
                 return;
             }
 
-            $jsonUrl = 'https://raw.githubusercontent.com/chandez/Estados-Cidades-IBGE/master/json/estados.json';
+            $jsonUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
             $response = Http::get($jsonUrl);
-            $estados = $response->json()['data'];
+            $estados = $response->json();
 
             if (!$estados)
                 throw new \Exception("Erro ao carregar arquivo JSON de Estados!\nURL:$jsonUrl");
 
+            $hora_de_criacao = Carbon::now();
             $listEstados = [];
             foreach ($estados as $estado)
                 $listEstados[] = [
-                    "nome"      =>  $estado['Nome'],
-                    "codigouf"  =>  $estado["CodigoUf"],
-                    "uf"        =>  $estado["Uf"],
-                    "regiao_id" =>  $estado["Regiao"]
+                    "nome"      =>  $estado['nome'],
+                    "uf"        =>  $estado["sigla"],
+                    "regiao_id" =>  $estado["regiao"]["id"],
+                    "created_at" =>  $hora_de_criacao,
+                    "updated_at" =>  $hora_de_criacao
                 ];
 
             if (!Estado::insert($listEstados))

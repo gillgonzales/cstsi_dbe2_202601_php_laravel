@@ -1,9 +1,10 @@
 import axios from "axios";
 
 export const API_HOST = import.meta.env.VITE_API_HOST
-
+export const API_URL = import.meta.env.VITE_API_URL
+console.log(API_HOST,API_URL)
 const axiosClient = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: API_URL,
 });
 
 axiosClient.defaults.withCredentials = true

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Attributes\Fillable;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -64,5 +66,29 @@ class Produto extends Model
     public function links(): MorphMany
     {
         return $this->morphMany(Link::class, 'model');
+    }
+
+     //query scope Local
+    public function scopePorRegiao(Builder $query, string $nome)
+    {
+        // return  $query->whereHas('fornecedor',fn($q) => $q->whereHas('estado',fn($q) => $q->whereHas('regiao',fn($q) => $q->where('nome', 'like', $nome))));
+        // return $query->whereHas(
+        //     'fornecedor',
+        //     fn($q) => $q->whereHas(
+        //         'estado',
+        //         fn($q) => $q->whereHas(
+        //             'regiao',
+        //             fn($q) => $q->where('nome', 'like', $nome)
+        //         )
+        //     )
+        // );
+        // return Regiao::where('nome', $nome)->with('produtos');
+        return $query->whereHas('regiao',fn($q)=>$q->where('regioes.nome','like',"%$nome%"));
+    }
+
+     //https://laravel.com/docs/11.x/eloquent#query-scopes
+    public function scopeImportados(Builder $query, bool $importado = true)
+    {
+        return $query->where('importado', $importado);
     }
 }

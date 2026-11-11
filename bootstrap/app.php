@@ -14,9 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+
          // Permite que o Laravel entenda os IPs rotativos do Heroku
-        $middleware->trustProxies(at: '*');
+        // $middleware->trustProxies(at: '*');
         $middleware->api(prepend:[ForceJsonResponse::class]);
+        // dd($middleware->getMiddlewareGroups());
         $middleware->statefulApi();
         $middleware->alias([
             'ability'=>CheckForAnyAbility::class
