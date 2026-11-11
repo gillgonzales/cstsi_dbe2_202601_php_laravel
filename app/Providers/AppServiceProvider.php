@@ -30,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
                 return $user->id === $model->id;
         });
 
+         Gate::define('delete-user',function (User $user, User $model) {
+                // dd([$user,$model]);
+                return $user->id === $model->id || $user->is_admin;
+        });
+
         Gate::define('superuser',function(User $user){
             return $user->is_admin;
         });
