@@ -36,8 +36,8 @@ class Fornecedor extends Model
         return $this->hasMany(Produto::class);//$modelName_$primaKey
     }
 
-    public function links(): MorphMany
+    public function medias(): MorphMany
     {
-        return $this->morphMany(Link::class, 'model');
+        return $this->morphMany(Media::class,'mediable');
     }
 }
