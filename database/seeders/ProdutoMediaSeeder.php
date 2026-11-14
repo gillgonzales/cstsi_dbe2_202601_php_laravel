@@ -44,7 +44,6 @@ class ProdutoMediaSeeder extends Seeder
                 )->toArray();
 
             Media::insert($medias)
-                // ? Log::channel('stderr')->info("Vídeos cadastrados! Fornecedor: $modelFornecedorId | Produto: $modelProdutoId")
                 ? Log::channel('stderr')->info("Vídeos cadastrados!")
                 : throw new Exception("Erro ao criar medias!");
 
