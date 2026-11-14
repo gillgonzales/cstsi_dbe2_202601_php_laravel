@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Produto;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,8 +20,9 @@ class DatabaseSeeder extends Seeder
             EstadoSeeder::class,
             FornecedorSeeder::class,
             PromocaoSeeder::class,
-            // ProdutoPromocaoSeeder::class,
-            LinkSeeder::class
+            ProdutoPromocaoSeeder::class,
+            MediaSeeder::class,
+            ProdutoMediaSeeder::class
         ]);
     }
 }
