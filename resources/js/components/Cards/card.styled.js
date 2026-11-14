@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import styled from "styled-components";
+import videoThumb from "../../assets/img/videoThumb.webp"
 
 export const CardContainer = styled.div`
   margin-left: auto;
@@ -21,7 +22,7 @@ export const CardContainer = styled.div`
   }
 
   @media (min-width: 768px) {
-      height: 20rem /* 320px */;
+      /* height: 20rem; */
       overflow: hidden;
   }
 `;
@@ -80,6 +81,7 @@ export const CardImage = styled.div`
   height: 350px;
   width: 100%;
   align-items: center;
+  justify-content: center;
   background-color: #e0f2fe;
 
   img {
@@ -89,14 +91,28 @@ export const CardImage = styled.div`
     aspect-ratio: 3/4;
   }
 
+  div:has(iframe) {
+    /* margin: auto; */
+    background-image: url(${videoThumb});
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 85%;
+    iframe {
+        height: 100%;
+        width: 100%;
+    }
+}
+
   @media (min-width: 640px) {
-      img{ 
+      img{
         aspect-ratio: 1;
       }
   }
 
   @media (min-width: 768px) {
       width: 100%;
-      height: 200px;
+      /* height: 200px; */
   }
 `;
