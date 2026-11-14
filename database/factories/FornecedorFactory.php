@@ -24,7 +24,6 @@ class FornecedorFactory extends Factory
             "estado_id" => fake()->numberBetween(1, 27),
             "telefone" => fake()->cellphoneNumber(),
             "endereco" => fake()->sentence(3) . ' nr:' . fake()->randomNumber(4, false)
-
         ];
     }
 }

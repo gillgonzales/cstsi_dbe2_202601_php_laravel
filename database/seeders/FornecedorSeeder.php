@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Fornecedor;
-use App\Models\Link;
+use App\Models\Media;
 use App\Models\Produto;
 use App\Models\Promocao;
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class FornecedorSeeder extends Seeder
@@ -17,9 +16,9 @@ class FornecedorSeeder extends Seeder
      */
     public function run(): void
     {
-        Fornecedor::factory(10)
+        Fornecedor::factory(5)
             ->has(
-                Produto::factory(50)
+                Produto::factory(5)
                     ->hasAttached(
                         Promocao::factory()->count(3),
                         [
@@ -29,10 +28,12 @@ class FornecedorSeeder extends Seeder
                         ],
                         'promocoes'
                     )
-                    ->hasLinks(2)
+                    ->hasMedias(2)
             )
-            ->has(Link::factory(2))
-            ->hasProdutos(2)
+            // ->has(Media::factory(2))
+            ->hasMedias(2)
+            ->hasProdutos(5)
+            ->hasMedias(1)
             ->create();
     }
 }
