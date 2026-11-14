@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Link extends Model
+class Media extends Model
 {
-    /** @use HasFactory<\Database\Factories\LinkFactory> */
     use HasFactory;
 
     protected $table = 'medias';
@@ -17,7 +16,7 @@ class Link extends Model
         'source'
     ];
 
-    public function model():MorphTo
+    public function mediable():MorphTo
     {
         return $this->morphTo();
     }
