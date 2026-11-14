@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Attributes\Fillable;
 
+use App\Models\Scopes\ProdutoRelationsScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Znck\Eloquent\Relations\BelongsToThrough;
 
 // #[Fillable(['nome', 'descricao', 'qtd_estoque', 'preco', 'importado'])]
-
+#[ScopedBy([ProdutoRelationsScope::class])]
 class Produto extends Model
 {
     /** @use HasFactory<\Database\Factories\ProdutoFactory> */
@@ -29,6 +31,11 @@ class Produto extends Model
         'importado',
         'fornecedor_id'
     ];
+
+    //  protected static function booted(): void
+    // {
+    //     static::addGlobalScope(new ProdutoRelationsScope);
+    // }
 
     public function fornecedor():BelongsTo
     {
@@ -63,9 +70,9 @@ class Produto extends Model
             ->withTimestamps();
     }
 
-    public function links(): MorphMany
+    public function medias(): MorphMany
     {
-        return $this->morphMany(Link::class, 'model');
+        return $this->morphMany(Media::class, 'mediable');
     }
 
      //query scope Local
