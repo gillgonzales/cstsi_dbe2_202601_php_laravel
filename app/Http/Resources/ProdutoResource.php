@@ -19,12 +19,10 @@ class ProdutoResource extends JsonResource
         return [
             ...parent::toArray($request),
             'media' => $this->whenLoaded(
-                'links',
-                fn() => $this->links->map(
+                'medias',
+                fn() => $this->medias->map(
                     function($media){
-                        $media->source =
-                            $media->type == 'image'
-                            && (str_contains($media->source,'http'))
+                        $media->source = (str_contains($media->source,'http'))
                                 ? $media->source
                                 : asset(Storage::url('produtos/' . $media->source));
                         return $media;
