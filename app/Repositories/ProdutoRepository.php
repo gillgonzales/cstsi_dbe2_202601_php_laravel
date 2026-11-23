@@ -3,22 +3,28 @@
 namespace App\Repositories;
 
 use App\Models\Produto;
-use App\Services\ProdutoUploadService;
+use App\Interfaces\ProdutoRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
-class ProdutoRepository
+class ProdutoRepository implements ProdutoRepositoryInterface
 {
-    public static function store(array $produtoData): Produto
+    public function all():Collection {
+        return Produto::all();
+    }
+
+    public function findById(int $id): ?Produto
     {
-        if (!isset($produtoData['imagem']))
-            return Produto::create($produtoData);
+       return Produto::findOrfail($id)->load('promocoes','fornecedor.estado.regiao');
+    }
 
-        $produtoData['imagem'] = ProdutoUploadService::handleUploadFile($produtoData['imagem']);
-        if (!$produtoData['imagem'])
-            return Produto::create($produtoData);
+    public function create(array $data): Produto
+    {
+        if (!$data['imagem'])
+            return Produto::create($data);
 
-        $novoProduto = Produto::create($produtoData);
-        $novoProduto->links()->create([
-            'source' => $produtoData['imagem']
+        $novoProduto = Produto::create($data);
+        $novoProduto->medias()->create([
+            'source' => $data['imagem']
         ]);
         return $novoProduto->load('links');
     }
