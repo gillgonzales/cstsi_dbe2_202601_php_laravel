@@ -9,7 +9,7 @@ export const DefaultLogo = styled(NavLogo)`
 export const LogoutIcon = styled(DefaultLogo)`
   justify-content: end;
   cursor: pointer;
-  
+
   img {
     width: 25px;
   }
@@ -35,6 +35,8 @@ export const GuestStyled = styled.div`
     justify-content: center;
     padding: 0.75rem;
     box-sizing: border-box;
+    min-height: 55vh;
+    background-color: white;
   }
 
   @media (min-width: 640px) {
@@ -50,7 +52,7 @@ export const DefaultStyled = styled.div`
 
   header {
     width: 100%;
-    height: 80px;
+    height: 5vh;
     padding: 2rem 3rem;
     background-color: var(--main-bg-color);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -65,7 +67,8 @@ export const DefaultStyled = styled.div`
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
-    min-height: 50vh;
+    min-height: 80vh;
+    background-color: white;
   }
 
   section {
@@ -82,6 +85,7 @@ export const DefaultStyled = styled.div`
     padding: 1rem;
     /* border: 2px solid green; */
     border-radius: 0 0 20% 20%/ 0 0 5% 5%;
+    max-height: 50vh;
   }
 
   aside > a {

@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
-  max-height: 4rem;
+  /* max-height: 4rem; */
+  min-height: 5vh;
   background-color: #1e40af;
   padding-top: 0.5rem;
 `;
@@ -19,7 +20,7 @@ export const NavLogo = styled.div`
 `;
 
 export const NavLinks = styled.div`
-display: flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 75%;

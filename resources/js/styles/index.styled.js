@@ -48,6 +48,7 @@ export const GlobalStyles = createGlobalStyle`
 
     #root{
       width:100vw;
+      background-color: var(--primary-color);
     }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -78,7 +79,7 @@ body div {
     align-items: center;
     text-align: center;
   }
-  
+
 
 input {
     outline: 0;

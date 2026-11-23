@@ -11,7 +11,8 @@ export const ShowContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  height: fit-content;
+  /* height: fit-content; */
+  height: 100%;
   min-height: 20rem /* 320px */;
   column-gap: 2rem /* 32px */;
   row-gap: 1.25rem /* 20px */;
@@ -24,6 +25,7 @@ export const ShowContainer = styled.div`
 
   @media (min-width: 768px) {
     width: 50vw;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   @media (min-width: 1024px) {
