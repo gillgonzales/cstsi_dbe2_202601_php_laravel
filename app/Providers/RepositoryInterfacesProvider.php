@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Interfaces\ProdutoRepositoryInterface;
+use App\Http\Controllers\Api\ProdutoController;
+use App\Interfaces\RepositoryInterface;
 use App\Repositories\ProdutoRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,7 @@ class RepositoryInterfacesProvider extends ServiceProvider
      * @var array
      */
     //  public $bindings = [
-    //     ProdutoRepositoryInterface::class => ProdutoRepository::class,
+    //     RepositoryInterface::class => ProdutoRepository::class,
     // ];
 
     /**
@@ -22,7 +23,10 @@ class RepositoryInterfacesProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(ProdutoRepositoryInterface::class, ProdutoRepository::class);
+        // $this->app->bind(RepositoryInterface::class, ProdutoRepository::class);
+        $this->app->when(ProdutoController::class)
+                    ->needs(RepositoryInterface::class)
+                    ->give(ProdutoRepository::class);
     }
 
     /**

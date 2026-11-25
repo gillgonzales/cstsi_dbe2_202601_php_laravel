@@ -33,7 +33,6 @@ class FornecedorSeeder extends Seeder
             // ->has(Media::factory(2))
             ->hasMedias(2)
             ->hasProdutos(5)
-            ->hasMedias(1)
             ->create();
     }
 }

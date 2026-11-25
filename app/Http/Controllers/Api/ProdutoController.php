@@ -9,7 +9,7 @@ use App\Http\Resources\ProdutoResource;
 use App\Http\Resources\ProdutoResourceCollection;
 use App\Http\Resources\ProdutoStoredResource;
 use App\Http\Resources\ProdutoUpdatedResource;
-use App\Interfaces\ProdutoRepositoryInterface;
+use App\Interfaces\RepositoryInterface;
 use App\Models\Produto;
 use App\Services\ProdutoService;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -20,7 +20,7 @@ class ProdutoController extends Controller
 {
 
     public function __construct(
-        private ProdutoRepositoryInterface $repository
+        private RepositoryInterface $repository
     ) {}
 
     /**
@@ -85,45 +85,8 @@ class ProdutoController extends Controller
 
     public function filter(Request $request)
     {
-
-        //https://app.notion.com/p/prof-gillgonzales-ifsul/Aula-09-ORM-Parte-1-Relacionamentos-com-o-Eloquent-20c1037386bf80fe99dfe0a17d847b5d?source=copy_link#20c1037386bf81ed8679cabde5e5762c
-        // Produto::where('importado',1)
-        // 		->whereBetween('preco',[100,2000])
-        // 		->whereHas('fornecedor',
-        // 					fn($q)=>
-        // 							$q->whereHas('estado',fn($q)=>
-        // 									$q->whereHas('regiao',
-        // 											fn($q)=>
-        // 												$q->where('nome','like','Sul'))))
-        // 		->get()
-
         try {
-            $importado = $request->has('importado') ? $request->importado : 0;
-            $min = $request->has('min') ? $request->min : 1;
-            $max = $request->has('max') ? $request->max : 99999;
-
-            // if ($request->has('nome'))
-            //     $queryBuilderFilter->where('nome','like',"%$request->nome%");
-
-            // if ($request->hasAny(['min', 'max']))
-            //     $queryBuilderFilter->whereBetween('preco', [$min, $max]);
-
-            // if ($request->has('regiao'))
-            //     $queryBuilderFilter->porRegiao($request->regiao);
-
-            // if ($request->has('importado'))
-            //     $queryBuilderFilter->importados($importado);
-
-            $queryBuilderFilter = Produto::with('fornecedor.estado.regiao');
-            $request->has('nome') && $queryBuilderFilter->where('nome','like',"%$request->nome%");
-            $request->hasAny(['min', 'max']) && $queryBuilderFilter->whereBetween('preco', [$min, $max]);
-            $request->has('regiao') && $queryBuilderFilter->porRegiao($request->regiao);
-            $request->has('importado') && $queryBuilderFilter->importados($importado);
-
-            // dd($queryBuilderFilter->toSql());
-
-            $filteredProducts =  $queryBuilderFilter->get();
-
+            $filteredProducts = $this->repository->filter($request);
             return new ProdutoResourceCollection($filteredProducts)
                 ->additional(['total' => $filteredProducts->count()]);
 

@@ -6,14 +6,14 @@ use Exception;
 use App\Models\Produto;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use App\Interfaces\ProdutoRepositoryInterface;
+use App\Interfaces\RepositoryInterface;
 
 class ProdutoService
 {
     private $storagePath = 'produtos/';
 
     public function __construct(
-        protected ProdutoRepositoryInterface $repository
+        protected RepositoryInterface $repository
     ){}
 
     private function handleUploadImage(UploadedFile $produtoImage): string | null

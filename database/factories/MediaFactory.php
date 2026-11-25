@@ -17,7 +17,7 @@ class MediaFactory extends Factory
      */
     public function definition(): array
     {
-         $texts = ['RTX graphics card', 'AMD Radeon GPU', 'gaming graphics', 'card hardware', 'computer', 'motherboard','GPU Gamer'];
+         $nomes = ['Placa de Vídeo RTX', 'AMD Radeon GPU', 'Placa Gráfica Gamer', 'Memória', 'PC Gamer', 'Placa Mãe','GPU Gamer'];
          return [
             //  "source" =>str_replace(
             //     'via.placeholder.com',
@@ -29,7 +29,7 @@ class MediaFactory extends Factory
                             360,
                             360,
                             fake()->bothify(
-                                fake()->randomElement($texts).
+                                fake()->randomElement($nomes).
                                 ' ####'
                             ),
                             true
